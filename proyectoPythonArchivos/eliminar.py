@@ -4,8 +4,8 @@ import os
 #path = "./registro_videojuegos.txt"
 
 def eliminar(elemento, path):
-	print('\n********** Eliminar ${elemento} ***********')
-	print('\nIngrese el nombre del ${elemento} a eliminar')
+	print('\n********** Eliminar ' + elemento + ' ***********')
+	print('\nIngrese el nombre del ' + elemento.lower() + ' a eliminar')
 	nombre = input('\nNombre: ')
 	os.system ("cls")
 	archivo_abierto = open(path,"r")
@@ -50,6 +50,5 @@ def eliminar_elemento():
 		else:
 			os.system ("cls")
 			print('Opcion no existe, ingrese un numero valido')
-
 	eliminar(elemento_elegido, path)
 	return
