@@ -27,7 +27,7 @@ def main():
 		elif numero_accion is 2:
 			actualizar.actualizar_videojuego()
 		elif numero_accion is 3:
-			buscar.buscar_videojuego()
+			buscar.menu_buscar()
 		elif numero_accion is 4:
 			eliminar.eliminar_elemento()
 		elif numero_accion is 5:
