@@ -1,0 +1,5 @@
+Ave;AVENTURA;Basado en exploracion e investigacion para resolucion de puzzles en un ambiente hostil
+Rol;Role Play Game; El jugador sigue la historia encarnado en el protagonista mientras se adentra un mundo con combates por turnos
+Pla;Plataforma;Basado en los reflejos del jugador y habilidad para maniobrar al personaje a traves de un mundo repleto de plataformas
+Vis;Visual Novel;Cuenta una historia dando la opcion al jugador de eleir opciones
+Est;Estrategias;El jugador controla varios vpc para derrota al rival
