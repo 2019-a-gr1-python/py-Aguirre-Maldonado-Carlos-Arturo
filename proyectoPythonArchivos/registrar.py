@@ -1,10 +1,11 @@
 from Videojuego import Videojuego
 from Genero import Genero
 import os
+import buscar
 
 path = "./registro_videojuegos.txt"
 
-def ingresar_genero():
+def ingresar_genero():	
 	os.system ("cls")
 	print('\n********** Nuevo Genero de Videojuego *********')
 	print('\nIngrese los siguientes datos: ')
@@ -18,16 +19,21 @@ def ingresar_genero():
 
 
 def ingresar_videojuego():
+	buscar.lista_generos
+	buscar.llenar_arreglo_genero()
 	os.system ("cls")
 	print('\n********** Nuevo Videojuego *********')
 	print('\nIngrese los siguientes datos del videojuego: ')
 
 	nombre = input('\nNombre: ')
-	genero = input('\nGenero: ')
+	buscar.imprimir_lista_genero()
+	posicion_genero = int(input('\nGenero: '))
 	#censura = input('\nCensura: ')
 	precio = input('\nPrecio(ejemplo: $5.00): $')
 	#plataforma = input('\nPlataforma: ')
 	os.system ("cls")
+
+	genero = buscar.lista_generos[posicion_genero-1].get_codigo()
 	
 	#return videojuego = Videojuego(nombre, genero, censura, precio, plataforma)
 	return Videojuego(nombre, genero, precio)
@@ -60,5 +66,6 @@ def registrar_elemento():
 
 def registrar(path, objeto):
 	file = open(path, "a")
-	file.write(objeto.__str__('w') + "\n")
+	file.write("\n"+objeto.__str__())
 	file.close()
+

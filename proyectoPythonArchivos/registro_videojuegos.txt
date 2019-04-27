@@ -1,8 +1,8 @@
-Ace Attorney;VN;30.00
-Digimon Last Order;Aventura;50.00
-Yu-Gi-Oh;cartas;30.00
-Pokemon;JRPG;90.00
-PLvPW;Aventura;60.00
-Prince of Persia;Aventura;68.00
-Super Mario 3DS;Plataforma;80.00
-Super Mario Oddysey;Plataformas;80.00
+Ace Attorney;Vis;30.00
+Digimon Last Order;Ave;50.00
+Yu-Gi-Oh;car;30.00
+Pokemon;RPG;90.00
+PLvPW;Ave;60.00
+Prince of Persia;Ave;68.00
+Super Mario 3DS;Pla;80.00
+Super Mario Oddysey;Pla;90.00

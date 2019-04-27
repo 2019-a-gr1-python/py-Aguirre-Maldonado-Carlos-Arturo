@@ -50,5 +50,6 @@ def eliminar_elemento():
 		else:
 			os.system ("cls")
 			print('Opcion no existe, ingrese un numero valido')
+			
 	eliminar(elemento_elegido, path)
 	return
