@@ -23,13 +23,13 @@ def main():
 		#os.system ("clear") #MAC
 
 		if numero_accion is 1:
-			registrar.registrar_elemento()
+			registrar.menu_registrar()
 		elif numero_accion is 2:
-			actualizar.actualizar_videojuego()
+			actualizar.menu_actualizar()
 		elif numero_accion is 3:
 			buscar.menu_buscar()
 		elif numero_accion is 4:
-			eliminar.eliminar_elemento()
+			eliminar.menu_eliminar()
 		elif numero_accion is 5:
 			break
 		else:

@@ -22,7 +22,7 @@ def eliminar(elemento, path):
 	archivo_abierto.close()
 	return
 
-def eliminar_elemento():
+def menu_eliminar():
 	
 	elemento_elegido = ''
 	path = ''

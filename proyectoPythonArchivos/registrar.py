@@ -33,13 +33,16 @@ def ingresar_videojuego():
 	#plataforma = input('\nPlataforma: ')
 	os.system ("cls")
 
+
 	genero = buscar.lista_generos[posicion_genero-1].get_codigo()
+
+	buscar.lista_generos.clear()
 	
 	#return videojuego = Videojuego(nombre, genero, censura, precio, plataforma)
 	return Videojuego(nombre, genero, precio)
 
 
-def registrar_elemento():
+def menu_registrar():
 	while(True):
 		print('\n**************** Registro ***************')
 		print('\nLista de elementos que se pueden ingresar')
