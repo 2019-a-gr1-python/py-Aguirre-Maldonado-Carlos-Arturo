@@ -3,10 +3,11 @@ class Genero:
 	nombre = ''
 	descripcion = ''
 
-	def __init__(self, nombre, descripcion):
-		self.codigo = nombre[:3]
+	def __init__(self, codigo, nombre, descripcion):
+		self.codigo = codigo
 		self.nombre = nombre
 		self.descripcion = descripcion
+
 		
 	def __str__(self):
 		cadena = ''

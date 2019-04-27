@@ -7,6 +7,7 @@ path = "./registro_videojuegos.txt"
 
 def ingresar_genero():	
 	os.system ("cls")
+	#os.system ("clear") #MAC
 	print('\n********** Nuevo Genero de Videojuego *********')
 	print('\nIngrese los siguientes datos: ')
 	
@@ -14,14 +15,16 @@ def ingresar_genero():
 	descripcion_genero = input('\nDescripcion: ')
 
 	os.system ("cls")
+	#os.system ("clear") #MAC
 
-	return Genero(nombre_genero, descripcion_genero)
+	return Genero(nombre_genero[:3],nombre_genero, descripcion_genero)
 
 
 def ingresar_videojuego():
 	buscar.lista_generos
-	buscar.llenar_arreglo_genero()
+	buscar.llenar_lista_genero()
 	os.system ("cls")
+	#os.system ("clear") #MAC
 	print('\n********** Nuevo Videojuego *********')
 	print('\nIngrese los siguientes datos del videojuego: ')
 
@@ -32,6 +35,7 @@ def ingresar_videojuego():
 	precio = input('\nPrecio(ejemplo: $5.00): $')
 	#plataforma = input('\nPlataforma: ')
 	os.system ("cls")
+	#os.system ("clear") #MAC
 
 
 	genero = buscar.lista_generos[posicion_genero-1].get_codigo()
@@ -62,6 +66,7 @@ def menu_registrar():
 			break
 		else:
 			os.system ("cls")
+			#os.system ("clear") #MAC
 			print('Opcion no existe, ingrese un numero valido')
 
 	return

@@ -1,28 +1,21 @@
 class Videojuego:
-	nombre = ''
-	genero = 0
-	#censura = 0
-	precio = 0.00
-	#plataforma = ''
-
-	def __init__(self, nombre, genero, #censura, 
-		precio, #plataforma
-		):
+	__nombre = ''
+	__genero = 0
+	__precio = 0.00
+	
+	def __init__(self, nombre, genero, precio):
 		self.nombre = nombre
 		self.genero = genero
-		#self.censura = censura
 		self.precio = precio
-		#self.plataforma = plataforma
 
 	def __str__(self):
 		cadena = ''
-		#return f'{self.nombre};{self.genero};{self.censura};{self.precio};{self.plataforma}'
-		cadena = f'{self.nombre};{self.genero};{self.precio}'
+		cadena = f'{self.__nombre};{self._genero};{self.__precio}'
 		return cadena
 		
 	def imprimir_datos(self):
 		cadena = ''
-		cadena = f'Nombre: {self.nombre}\nGenero: {self.genero}\nPrecio: ${self.precio}\n'
+		cadena = f'Nombre: {self.__nombre}\nGenero: {self.__genero}\nPrecio: ${self.__precio}\n'
 		return cadena
 
 	def set_nombre(self, nombre):
@@ -39,3 +32,6 @@ class Videojuego:
 
 	def get_genero(self):
 		return self.genero
+
+	def get_precio(self):
+		return self.precio

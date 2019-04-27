@@ -3,9 +3,11 @@ import os
 import buscar
 import registrar
 
-path = "./registro_videojuegos.txt"
+
 
 def menu_actualizar():
+	os.system ("cls")
+	#os.system ("clear") #MAC
 	while(True):
 		print('\n********** Actualizar  *********')
 		print('\nElementos que se pueden eliminar')
@@ -16,8 +18,7 @@ def menu_actualizar():
 		numero_opcion = int(input('\nEscriba el numero de la opcion escogida: '))
 
 		if numero_opcion is 1:
-			elemento_elegido = 'Genero'
-			path ='./registro_genero.txt'
+			actualizar_genero()
 			break
 		elif numero_opcion is 2:
 			actualizar_videojuego()
@@ -28,24 +29,34 @@ def menu_actualizar():
 			os.system ("cls")
 			print('Opcion no existe, ingrese un numero valido')
 
-
-
-def actualizar_videojuego():
+def actualizar_elemento(elemento):
 	buscar.lista_videojuegos
 	buscar.llenar_arreglo_videojuego()
+	while(True):
+		os.system ("cls")
+		#os.system ("clear") #MAC
+		print('\n********** Buscar '+ elemento +' por nombre ***********')
+		print('\nIngrese el nombre del ' + elemento + ' a buscar')
+		nombre = input('\nNombre: ')
+		os.system ("cls")
+		#os.system ("clear") #MAC
+
+def actualizar_videojuego():
+	path = "./registro_videojuegos.txt"
+	buscar.lista_videojuegos
+	buscar.llenar_lista_videojuego()
 	print('\n********** Actualizar Videojuego  *********')
 	nombre = input('\nNombre:  ')
 	posicion = 0
 	archivo_abierto = open(path,"w")
 	archivo_abierto.write("")
-	archivo_abierto.close()
-
-
+	
 	for videojuego in buscar.lista_videojuegos:
 		if videojuego.get_nombre() == nombre:
 			posicion = buscar.lista_videojuegos.index(videojuego)
 
 	os.system ("cls")
+	#os.system ("clear") #MAC
 	flag = True
 	while (flag == True):
 		print('\n**************** Actualizar Videojuego *******************')
@@ -78,6 +89,61 @@ def actualizar_videojuego():
 	archivo_abierto.close()
 
 	buscar.lista_videojuegos.clear()
+	buscar.lista_generos.clear()
+
+	return
+
+def actualizar_genero():
+	path = "./registro_genero.txt"
+	buscar.lista_generos
+	buscar.llenar_lista_genero()
+	os.system ("cls")
+	#os.system ("clear") #MAC
+	print('\n********** Actualizar Genero  *********')
+	nombre = input('\nNombre:  ')
+	posicion = 0
+	archivo_abierto = open(path,"w")
+	archivo_abierto.write("")
+	
+	for genero in buscar.lista_generos:
+		if genero.get_nombre() == nombre:
+			posicion = buscar.lista_generos.index(genero)
+
+	os.system ("cls")
+	#os.system ("clear") #MAC
+	flag = True
+	while (flag == True):
+		os.system ("cls")
+		#os.system ("clear") #MAC
+		print('\n**************** Actualizar Genero *******************')
+		print('\nEscoja el dato que desee actualizar:')
+		print('\n1. Nombre')
+		print('\n2. Descripcion')
+		print('\n\n3. Cancelar')
+
+		dato_a_actualizar = int(input('\nIngrese el numero de la opcion escogida: '))
+
+		if dato_a_actualizar is 1:
+			nombre = input('\nIngrese nuevo nombre: ')
+			buscar.lista_generos[posicion].set_nombre(nombre)
+		elif dato_a_actualizar is 2:
+			nombre = input('\nIngrese nueva descripcion: ')
+			buscar.lista_generos[posicion].set_descripcion(descripcion)
+		elif dato_a_actualizar is 3:
+			break
+		else:
+			os.system ("cls")
+			#os.system ("clear") #MAC
+			print('Opcion no existe, ingrese un numero valido')
+
+
+	archivo_abierto = open(path, 'a')
+
+	for genero in buscar.lista_generos:
+		archivo_abierto.write(genero.__str__())
+
+	archivo_abierto.close()
+
 	buscar.lista_generos.clear()
 
 	return

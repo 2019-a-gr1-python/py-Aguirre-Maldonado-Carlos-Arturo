@@ -3,24 +3,74 @@ import os
 
 #path = "./registro_videojuegos.txt"
 
-def eliminar(elemento, path):
-	print('\n********** Eliminar ' + elemento + ' ***********')
-	print('\nIngrese el nombre del ' + elemento.lower() + ' a eliminar')
+def eliminar_videojuego(path):
+	os.system ("cls")
+	#os.system ("clear") #MAC
+	print('\n********** Eliminar Videojuego ***********')
+	print('\nIngrese el nombre del videojuego a eliminar')
 	nombre = input('\nNombre: ')
 	os.system ("cls")
+	#os.system ("clear") #MAC
 	archivo_abierto = open(path,"r")
 	lineas_archivo = archivo_abierto.readlines()
-	archivo_abierto = open(path,"w")
-	archivo_abierto.write("")
+	vaciar_archivo(path)
 	archivo_abierto = open(path, "a")
 	
 	for linea in lineas_archivo:
-		linea_leida = linea.split(";",1)
+		linea_leida = linea.split(";")
 		if linea_leida[0] != nombre:
 			archivo_abierto.write(str(linea))
 	
 	archivo_abierto.close()
 	return
+
+def eliminar_genero(path):
+	os.system ("cls")
+	#os.system ("clear") #MAC
+	print('\n********** Eliminar Genero ***********')
+	print('\nIngrese el nombre del genero a eliminar')
+	nombre = input('\nNombre: ')
+	os.system ("cls")
+	#os.system ("clear") #MAC
+	lineas_archivo = leer_archivo(path)
+
+	eliminar_videojuegos_de_genero(nombre[:3], './registro_videojuegos.txt')
+
+	vaciar_archivo(path)
+
+	archivo_abierto = open(path, "a")
+	
+	for linea in lineas_archivo:
+		linea_leida = linea.split(";")
+		if linea_leida[1] != nombre:
+			archivo_abierto.write(str(linea))
+	
+	archivo_abierto.close()
+	return
+
+def eliminar_videojuegos_de_genero(genero, path):
+	lineas_archivo = leer_archivo(path)
+
+	vaciar_archivo(path)
+
+	archivo_abierto = open(path, "a")
+	
+	for linea in lineas_archivo:
+		linea_leida = linea.split(";")
+		if linea_leida[1] != genero:
+			archivo_abierto.write(str(linea))
+	
+	archivo_abierto.close()
+
+def vaciar_archivo(path):
+	archivo = open(path,"w")
+	archivo.write("")
+	archivo.close()
+
+def leer_archivo(path):
+	archivo = open(path,"r")
+	return archivo.readlines()
+
 
 def menu_eliminar():
 	
@@ -38,18 +88,14 @@ def menu_eliminar():
 		
 
 		if numero_opcion is 1:
-			elemento_elegido = 'Genero'
-			path ='./registro_genero.txt'
-			break
+			eliminar_genero('./registro_genero.txt')
 		elif numero_opcion is 2:
-			elemento_elegido = 'Videojuego'
-			path ='./registro_videojuegos.txt'
-			break
+			eliminar_videojuego('./registro_videojuegos.txt')
 		elif numero_opcion is 3:
 			return
 		else:
 			os.system ("cls")
+			#os.system ("clear") #MAC
 			print('Opcion no existe, ingrese un numero valido')
 			
-	eliminar(elemento_elegido, path)
 	return
