@@ -1,7 +1,7 @@
 class Videojuego:
-	__nombre = ''
-	__genero = 0
-	__precio = 0.00
+	_nombre = ''
+	_genero = 0
+	_precio = 0.00
 	
 	def __init__(self, nombre, genero, precio):
 		self.nombre = nombre
@@ -10,12 +10,12 @@ class Videojuego:
 
 	def __str__(self):
 		cadena = ''
-		cadena = f'{self.__nombre};{self._genero};{self.__precio}'
+		cadena = f'{self._nombre};{self._genero};{self._precio}'
 		return cadena
 		
 	def imprimir_datos(self):
 		cadena = ''
-		cadena = f'Nombre: {self.__nombre}\nGenero: {self.__genero}\nPrecio: ${self.__precio}\n'
+		cadena = f'Nombre: {self._nombre}\nGenero: {self._genero}\nPrecio: ${self._precio}\n'
 		return cadena
 
 	def set_nombre(self, nombre):

@@ -1,6 +1,8 @@
 Ace Attorney;Vis;30.00
 Digimon Last Order;Ave;50.00
+Yu-Gi-Oh;Car;30.00
 Pokemon;Rol;90.00
+BoTW;Ave;80.00
 PLvPW;Ave;60.00
 Prince of Persia;Ave;68.00
-Age of Empires;Est;12.00
+Super Mario 3DS;Pla;80.00

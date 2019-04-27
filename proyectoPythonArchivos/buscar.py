@@ -39,17 +39,27 @@ def buscar_elemento_por_nombre(elemento, path):
 		#os.system ("clear") #MAC
 
 		if 	elemento == 'Genero':
-			print(lista_generos[recorrer_lista(lista_generos, nombre)].imprimir_datos())
+			try: 
+				print(lista_generos[recorrer_lista(lista_generos, nombre)].imprimir_datos())
+			except (TypeError) as nombre_Error:
+				print("\nGenero de videojuego no existe\n\nIngrese el nombre de un genero existente")
+				return
+
 		else:
-			videojuego = lista_videojuegos[recorrer_lista(lista_videojuegos, nombre)]
-			print('Nombre: '+ videojuego.get_nombre())
+			try: 
+				videojuego = lista_videojuegos[recorrer_lista(lista_videojuegos, nombre)]
+				print('Nombre: '+ videojuego.get_nombre())
 
-			for genero in lista_generos:
-				if genero.get_codigo() == videojuego.get_genero():
-					print('Genero: ' + genero.get_nombre())
-					break
+				for genero in lista_generos:
+					if genero.get_codigo() == videojuego.get_genero():
+						print('Genero: ' + genero.get_nombre())
+						break
 
-			print('Precio: $'+videojuego.get_precio()) 
+				print('Precio: $'+videojuego.get_precio()) 
+
+			except (TypeError) as nombre_Error:
+				print("\nVideojuego no existe\n\nIngrese el nombre de un videojuego existente")
+				return
 
 		return
 		
