@@ -7,8 +7,8 @@ import os
 def main():
 	
 	while True:
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 		print('\n**********Bienvenido a la tienda Juego Mania*********')
 		print('\nMenu de opciones')
 		print('\n1. Resgistrar')
@@ -19,8 +19,8 @@ def main():
 
 		numero_accion = int(input('\nIngrese el numero de la opcion escogida: '))
 
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 
 		if numero_accion is 1:
 			registrar.menu_registrar()

@@ -6,8 +6,8 @@ import eliminar
 
 
 def menu_actualizar():
-	#os.system ("cls")
-	#os.system ("clear") #MAC
+	##os.system ("cls")
+	os.system ("clear") #MAC
 	while(True):
 		print('\n********** Actualizar  *********')
 		print('\nElementos que se pueden eliminar')
@@ -26,13 +26,14 @@ def menu_actualizar():
 		elif numero_opcion is 3:
 			return
 		else:
-			os.system ("cls")
+			#os.system ("cls")
 			print('Opcion no existe, ingrese un numero valido')
 
 def actualizar_videojuego():
 	path = "./registro_videojuegos.txt"
 	buscar.lista_videojuegos
 	buscar.llenar_lista_videojuego()
+	os.system ("clear") #MAC
 	print('\n********** Actualizar Videojuego  *********')
 	nombre = input('\nNombre:  ')
 	posicion = 0
@@ -40,10 +41,6 @@ def actualizar_videojuego():
 	for videojuego in buscar.lista_videojuegos:
 		if videojuego.get_nombre() == nombre:
 			posicion = buscar.lista_videojuegos.index(videojuego)
-
-	os.system ("cls")
-	#os.system ("clear") #MAC
-
 	
 	flag = True
 
@@ -55,8 +52,8 @@ def actualizar_videojuego():
 		flag = False
 
 	while (flag == True):
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 		print('\n**************** Actualizar Videojuego *******************')
 		print('\nEscoja el dato que desee actualizar:')
 		print('\n1. Nombre')
@@ -79,9 +76,7 @@ def actualizar_videojuego():
 		elif dato_a_actualizar is 4:
 			break
 
-	if cadena_error != '':
-		return
-
+	
 	eliminar.vaciar_archivo(path)
 
 	archivo_abierto = open(path, 'a')
@@ -100,8 +95,8 @@ def actualizar_genero():
 	path = "./registro_genero.txt"
 	buscar.lista_generos
 	buscar.llenar_lista_genero()
-	os.system ("cls")
-	#os.system ("clear") #MAC
+	#os.system ("cls")
+	os.system ("clear") #MAC
 	print('\n********** Actualizar Genero  *********')
 	nombre = input('\nNombre:  ')
 	posicion = 0
@@ -110,12 +105,12 @@ def actualizar_genero():
 		if genero.get_nombre() == nombre:
 			posicion = buscar.lista_generos.index(genero)
 
-	os.system ("cls")
+	#os.system ("cls")
 	#os.system ("clear") #MAC
 	flag = True
 	while (flag == True):
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 		print('\n**************** Actualizar Genero *******************')
 		print('\nEscoja el dato que desee actualizar:')
 		print('\n1. Nombre')
@@ -128,16 +123,16 @@ def actualizar_genero():
 			nombre = input('\nIngrese nuevo nombre: ')
 			buscar.lista_generos[posicion].set_nombre(nombre)
 		elif dato_a_actualizar is 2:
-			nombre = input('\nIngrese nueva descripcion: ')
+			descripcion = input('\nIngrese nueva descripcion: ')
 			buscar.lista_generos[posicion].set_descripcion(descripcion)
 		elif dato_a_actualizar is 3:
 			break
 		else:
-			os.system ("cls")
+			#os.system ("cls")
 			#os.system ("clear") #MAC
 			print('Opcion no existe, ingrese un numero valido')
 
-	vaciar_archivo(path)		
+	eliminar.vaciar_archivo(path)		
 
 	archivo_abierto = open(path, 'a')
 

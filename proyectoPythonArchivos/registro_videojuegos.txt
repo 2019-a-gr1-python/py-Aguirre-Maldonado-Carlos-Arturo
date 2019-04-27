@@ -6,3 +6,6 @@ BoTW;Ave;80.00
 PLvPW;Ave;60.00
 Prince of Persia;Ave;68.00
 Super Mario 3DS;Pla;80.00
+Age of Empires;Est;40.00
+Profesor Layton y la Villa Misteriosa;Puz;60.00
+Zelda;Ave;40.00

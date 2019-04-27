@@ -30,13 +30,13 @@ def recorrer_lista(lista_objetos, nombre):
 def buscar_elemento_por_nombre(elemento, path):
 	
 	while(True):
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 		print('\n********** Buscar '+ elemento +' por nombre ***********')
 		print('\nIngrese el nombre del ' + elemento + ' a buscar')
 		nombre = input('\nNombre: ')
-		os.system ("cls")
-		#os.system ("clear") #MAC
+		#os.system ("cls")
+		os.system ("clear") #MAC
 
 		if 	elemento == 'Genero':
 			try: 
@@ -76,8 +76,8 @@ def nueva_busqueda():
 	if respuesta is 'Y':
 			return True
 	elif respuesta is 'N':
-			os.system ("cls")
-			#os.system ("clear") #MAC
+			#os.system ("cls")
+			os.system ("clear") #MAC
 			return False	
 
 
@@ -96,7 +96,7 @@ def menu_buscar():
 	flag = True
 	while flag:
 		os.system("cls")
-		#os.system ("clear") #MAC	
+		os.system ("clear") #MAC	
 		print('\n********** Buscar ***********')
 		print('\nMenu de opciones de busqueda: ')
 		print('\n1. Buscar videojuego por nombre')
@@ -113,12 +113,13 @@ def menu_buscar():
 		elif opcion_busqueda is 2:
 			buscar_elemento_por_nombre('Genero', './registro_genero.txt')
 		elif opcion_busqueda is 3:
+			os.system ("clear") #MAC
 			imprimir_videojuegos_por_genero()
 		elif opcion_busqueda is 4:
 			break
 		else:
-			os.system ("cls")
-			#os.system ("clear") #MAC
+			#os.system ("cls")
+			os.system ("clear") #MAC
 			print('Opcion no existe, ingrese un numero valido')
 
 		flag = nueva_busqueda()

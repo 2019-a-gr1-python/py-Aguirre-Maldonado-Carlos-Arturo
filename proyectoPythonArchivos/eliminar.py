@@ -4,13 +4,13 @@ import os
 #path = "./registro_videojuegos.txt"
 
 def eliminar_videojuego(path):
-	os.system ("cls")
-	#os.system ("clear") #MAC
+	#os.system ("cls")
+	os.system ("clear") #MAC
 	print('\n********** Eliminar Videojuego ***********')
 	print('\nIngrese el nombre del videojuego a eliminar')
 	nombre = input('\nNombre: ')
-	os.system ("cls")
-	#os.system ("clear") #MAC
+	#os.system ("cls")
+	os.system ("clear") #MAC
 	archivo_abierto = open(path,"r")
 	lineas_archivo = archivo_abierto.readlines()
 	vaciar_archivo(path)
@@ -25,13 +25,13 @@ def eliminar_videojuego(path):
 	return
 
 def eliminar_genero(path):
-	os.system ("cls")
-	#os.system ("clear") #MAC
+	#os.system ("cls")
+	os.system ("clear") #MAC
 	print('\n********** Eliminar Genero ***********')
 	print('\nIngrese el nombre del genero a eliminar')
 	nombre = input('\nNombre: ')
-	os.system ("cls")
-	#os.system ("clear") #MAC
+	#os.system ("cls")
+	os.system ("clear") #MAC
 	lineas_archivo = leer_archivo(path)
 
 	eliminar_videojuegos_de_genero(nombre[:3], './registro_videojuegos.txt')
@@ -94,8 +94,8 @@ def menu_eliminar():
 		elif numero_opcion is 3:
 			return
 		else:
-			os.system ("cls")
-			#os.system ("clear") #MAC
+			#os.system ("cls")
+			os.system ("clear") #MAC
 			print('Opcion no existe, ingrese un numero valido')
 			
 	return
