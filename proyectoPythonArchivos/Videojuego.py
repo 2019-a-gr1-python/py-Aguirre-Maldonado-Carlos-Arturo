@@ -34,3 +34,6 @@ class Videojuego:
 	def set_precio(self, precio):
 		self.precio = precio
 
+	def get_nombre(self):
+		return self.nombre
+

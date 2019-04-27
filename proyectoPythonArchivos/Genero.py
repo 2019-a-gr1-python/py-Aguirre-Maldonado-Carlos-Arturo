@@ -21,3 +21,6 @@ class Genero:
 
 	def set_descripcion(self, descripcion):
 		self.descripcion = descripcion
+
+	def get_nombre(self):
+		return self.nombre

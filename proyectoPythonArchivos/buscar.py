@@ -1,53 +1,74 @@
 import os
 from Videojuego import Videojuego
+from Genero import Genero
 
 path = "./registro_videojuegos.txt"
 
-def recorrer_archivo(lineas_archivo, nombre):
-	for linea in lineas_archivo:
-		linea_leida = linea.split(";",1)
-		if linea_leida[0] == nombre:
-			linea_leida = linea.split(";")
-			#videojuego = Videojuego(linea_leida[0], linea_leida[1],linea_leida[2],linea_leida[3],linea_leida[4])
-			return Videojuego(linea_leida[0], linea_leida[1],linea_leida[2])
-			
+lista_videojuegos = []
+lista_generos = []
 
-def buscar_videojuego():
-	#flag = True
+def llenar_arreglo_videojuego():
+	archivo_abierto = open("./registro_videojuegos.txt")
+	lineas_archivo = archivo_abierto.readlines()
+	for linea in lineas_archivo:
+		linea_leida = linea.split(";")
+		lista_videojuegos.append(Videojuego(linea_leida[0], linea_leida[1],linea_leida[2]))
+		
+def llenar_arreglo_genero():
+	archivo_abierto = open("./registro_genero.txt")
+	lineas_archivo = archivo_abierto.readlines()
+	for linea in lineas_archivo:
+		linea_leida = linea.split(";")
+		lista_generos.append(Genero(linea_leida[0], linea_leida[1]))	
+
+
+#def recorrer_archivo(lineas_archivo, nombre):
+	#for linea in lineas_archivo:
+		#linea_leida = linea.split(";",1)
+		#if linea_leida[0] == nombre:
+			#linea_leida = linea.split(";")
+			#videojuego = Videojuego(linea_leida[0], linea_leida[1],linea_leida[2],linea_leida[3],linea_leida[4])
+			#return Videojuego(linea_leida[0], linea_leida[1],linea_leida[2])
+
+def recorrer_lista(lista_objetos, nombre):
+	for objeto in lista_objetos:
+		if objeto.get_nombre() == nombre:
+			return objeto.__str__('p')
+			#break
+
+def buscar_elemento_por_nombre(elemento, path):
+	
 	while(True):
 		os.system ("cls")
-		print('\n********** Buscar Videojuego ***********')
-		print('\nIngrese el nombre del videojuego a buscar')
+		print('\n********** Buscar '+ elemento +' por nombre ***********')
+		print('\nIngrese el nombre del ' + elemento + ' a buscar')
 		nombre = input('\nNombre: ')
 		os.system ("cls")
-		archivo_abierto = open(path)
-		#lineas_archivo = archivo_abierto.readlines()
-	
-		#for linea in lineas_archivo:
-			#linea_leida = linea.split(";",1)
-			#if linea_leida[0] == nombre:
-				#linea_leida = linea.split(";")
-				#videojuego = Videojuego(linea_leida[0], linea_leida[1],linea_leida[2],linea_leida[3],linea_leida[4])
-				#videojuego = Videojuego(linea_leida[0], linea_leida[1],linea_leida[2])
-				#break
-	
-		print(recorrer_archivo(archivo_abierto.readlines(), nombre).__str__('p'))
+		
+		if 	elemento == 'Videojuego':
+			print(recorrer_lista(lista_videojuegos, nombre))
+		else:
+			print(recorrer_lista(lista_generos, nombre))
+
 		respuesta = input ('\n\n¿Desea realizar otra búsqueda? (Y/N): ')
 		
-		archivo_abierto.close()
-
 		if respuesta is 'Y':
-			continue
+			return True
 		elif respuesta is 'N':
 			os.system ("cls")
-			break
-
-	return
-
+			return False		
+	
 
 
 def menu_buscar():
-	while True:
+
+	llenar_arreglo_genero()
+	llenar_arreglo_videojuego()
+
+	elemento_elegido = ''
+	path = ''
+	flag = True
+	while flag:
 		
 		print('\n********** Buscar ***********')
 		print('\nMenu de opciones de busqueda: ')
@@ -60,9 +81,20 @@ def menu_buscar():
 
 
 		if opcion_busqueda is 1:
-			buscar_videojuego()
+			elemento_elegido = 'Videojuego'
+			path = './registro_videojuegos.txt'
+			#break
+		elif opcion_busqueda is 2:
+			elemento_elegido = 'Genero'
+			path = './registro_genero.txt'
+			#break
 		elif opcion_busqueda is 4:
 			break
 		else:
 			os.system ("cls")
 			print('Opcion no existe, ingrese un numero valido')
+
+		flag = buscar_elemento_por_nombre(elemento_elegido, path)
+
+
+	
