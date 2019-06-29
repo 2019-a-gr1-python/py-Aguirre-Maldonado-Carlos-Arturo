@@ -1,3 +1,4 @@
+import pandas as pd
 import scrapy
 
 class IntroSpider(scrapy.Spider):
@@ -20,22 +21,20 @@ class IntroSpider(scrapy.Spider):
 
         precios = etiqueta_contenedor.css('div.product_price > p.price_color::text').extract()
 
+        stocks = stocks[1::2]
+
+        stocks=list(map(lambda x:x.strip(),stocks))
+
         resultados_crawl = {
             'titulos': titulos,
             'stocks' : stocks,
             'precios': precios
         }
 
-        #print(titulos)
-        #print(stocks)
-        #print(precios)
+        df = pd.DataFrame(resultados_crawl, columns=['stocks','precios' ], index =titulos)
 
-        #print(resultados_crawl)
+        print(df)
 
-        print(resultados_crawl['stocks'][1])
-
-        #path = './resultados'
-        #archivo_escritura_abierto = open(path,mode='a')
-        #archivo_escritura_abierto.write(resultados_crawl['titulos'][0])
-        #archivo_escritura_abierto.close()
+        df.to_json('./resultados.json')
+        df.to_pickle('./resultados.pickle')
 
