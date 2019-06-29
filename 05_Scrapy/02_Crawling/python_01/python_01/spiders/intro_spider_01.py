@@ -35,6 +35,6 @@ class IntroSpider(scrapy.Spider):
 
         print(df)
 
-        df.to_json('resultados.json')
+        df.to_json('./resultados.json')
         df.to_pickle('./resultados.pickle')
 
