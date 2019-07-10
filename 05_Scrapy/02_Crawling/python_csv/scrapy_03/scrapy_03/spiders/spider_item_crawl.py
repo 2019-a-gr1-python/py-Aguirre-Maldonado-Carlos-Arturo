@@ -8,12 +8,23 @@ from scrapy.loader.processors import TakeFirst
 class AraniaProductosFybeca(CrawlSpider):
     name = 'arania_crawl_fybeca'
 
+    def generarUrls(self, url_inicial):
+
+        grupo_urls = []
+        n=0
+        final_de_url = url_inicial[69:]
+
+        for url in range(7):
+            url_inicial = url_inicial[0:68]+str(n)+final_de_url
+            grupo_urls.append(url_inicial)
+            n=n+25
+       
+        return grupo_urls
+
     allowed_domains = [
         'fybeca.com'
     ]
-    start_urls = [ 
-        'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25'
-    ]
+    start_urls = generarUrls("", 'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25')
 
     url_segmento_permitido = (
         'FybecaWeb/pages/search-results.jsf?s={0-150}&pp=25&cat=238&b=-1&ot=0',
@@ -28,7 +39,7 @@ class AraniaProductosFybeca(CrawlSpider):
     )
 
     rules = regla
-            
+
     def parse(self, response):
 
         productos = response.css('div.product-tile-inner')
@@ -52,7 +63,12 @@ class AraniaProductosFybeca(CrawlSpider):
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
                     )
 
+                producto_loader.add_xpath(
+                    'precio',
+                    'div[contains(@class,"detail")]/div[contains(@class,"side")]/div[contains(@class,"price")]/text'
+                    )
+
                 yield producto_loader.load_item()
 
                 #print(titulo.extract_first())
-                #print(url.extract_first())
+                #print(url.extract_first())     
