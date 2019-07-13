@@ -3,13 +3,24 @@ from scrapy_03.items import ProductoFybeca
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
 
+def generarUrls(self, url_inicial):
+
+        grupo_urls = []
+        n=0
+        final_de_url = url_inicial[69:]
+
+        for url in range(7):
+            url_inicial = url_inicial[0:68]+str(n)+final_de_url
+            grupo_urls.append(url_inicial)
+            n=n+25
+       
+        return grupo_urls
+
 class AraniaProductosFybeca(scrapy.Spider):
     name = 'arania_fybeca'
 
     def start_requests(self):
-        urls = [
-        'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25'
-        ]
+        urls = generarUrls("", 'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25')
 
         for url in urls:
             yield scrapy.Request(url=url)
@@ -35,6 +46,10 @@ class AraniaProductosFybeca(scrapy.Spider):
                 producto_loader.add_xpath(
                     'imagen',
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
+                    )
+                producto_loader.add_css(
+                    'precio',
+                    '.price::attr(data-bind)'
                     )
 
                 yield producto_loader.load_item()

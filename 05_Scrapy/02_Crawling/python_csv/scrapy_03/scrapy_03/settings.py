@@ -70,6 +70,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
     'scrapy_03.pipelines.TransformarTituloAMinusculas': 200,
     'scrapy_03.pipelines.FiltrarSoloTabletas': 300,
+    'scrapy_03.pipelines.EscogerProductosPrecioMayorAPromerio':400,
 }
 
 FEED_FORMAT = 'csv'

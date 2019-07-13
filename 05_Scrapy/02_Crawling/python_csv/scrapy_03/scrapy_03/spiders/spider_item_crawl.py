@@ -5,10 +5,7 @@ from scrapy_03.items import ProductoFybeca
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
 
-class AraniaProductosFybeca(CrawlSpider):
-    name = 'arania_crawl_fybeca'
-
-    def generarUrls(self, url_inicial):
+def generarUrls(self, url_inicial):
 
         grupo_urls = []
         n=0
@@ -21,10 +18,16 @@ class AraniaProductosFybeca(CrawlSpider):
        
         return grupo_urls
 
+class AraniaProductosFybeca(CrawlSpider):
+    name = 'arania_crawl_fybeca'
+
     allowed_domains = [
         'fybeca.com'
     ]
+    
     start_urls = generarUrls("", 'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25')
+
+    #start_urls = [ "https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=50&pp=25" ]
 
     url_segmento_permitido = (
         'FybecaWeb/pages/search-results.jsf?s={0-150}&pp=25&cat=238&b=-1&ot=0',
@@ -63,9 +66,9 @@ class AraniaProductosFybeca(CrawlSpider):
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
                     )
 
-                producto_loader.add_xpath(
+                producto_loader.add_css(
                     'precio',
-                    'div[contains(@class,"detail")]/div[contains(@class,"side")]/div[contains(@class,"price")]/text'
+                    '.price::attr(data-bind)'
                     )
 
                 yield producto_loader.load_item()

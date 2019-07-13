@@ -23,8 +23,19 @@ class FiltrarSoloTabletas(object):
 
 class TransformarTituloAMinusculas:
 
-    def process_item(self, item, spier):
+    def process_item(self, item, spider):
 
         item['titulo'] = item['titulo'].lower()
 
         return item
+
+class EscogerProductosPrecioMayorAPromerio(object):
+    
+    def process_item(self, item, spider):
+
+        promedio = 12.34
+
+        if(item['precio']>promedio):
+            return item
+        else:
+            raise DropItem('No es mayor al promedio')
