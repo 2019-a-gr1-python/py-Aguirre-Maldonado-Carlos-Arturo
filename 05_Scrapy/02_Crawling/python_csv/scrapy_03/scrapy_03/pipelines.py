@@ -6,6 +6,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from scrapy.exceptions import DropItem
+import pandas as pd
 
 class FiltrarSoloTabletas(object):
 
@@ -30,10 +31,14 @@ class TransformarTituloAMinusculas:
         return item
 
 class EscogerProductosPrecioMayorAPromerio(object):
-    
+
     def process_item(self, item, spider):
 
-        promedio = 12.34
+        productos = pd.read_csv('tmp/productos_fybeca.csv', delimiter=',')
+
+        promedio = productos['precio'].mean()
+
+        #promedio = 12.34
 
         if(item['precio']>promedio):
             return item

@@ -74,7 +74,7 @@ ITEM_PIPELINES = {
 }
 
 FEED_FORMAT = 'csv'
-FEED_URI = 'tmp/productos-fybeca.csv'
+FEED_URI = 'tmp/productos-fybeca_crawl.csv'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
