@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for cryptoCurencyDataExtract project
+# Scrapy settings for proyectoFinal project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,21 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'cryptoCurencyDataExtract'
+BOT_NAME = 'proyectoFinal'
 
-SPIDER_MODULES = ['cryptoCurencyDataExtract.spiders']
-NEWSPIDER_MODULE = 'cryptoCurencyDataExtract.spiders'
+SPIDER_MODULES = ['proyectoFinal.spiders']
+NEWSPIDER_MODULE = 'proyectoFinal.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'cryptoCurencyDataExtract (+http://www.yourdomain.com)'
+#USER_AGENT = 'proyectoFinal (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+
+
+FEED_FORMAT = 'json'
+FEED_URI = 'tmp/crypto2.json'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -47,13 +51,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'cryptoCurencyDataExtract.middlewares.CryptocurencydataextractSpiderMiddleware': 543,
+#    'proyectoFinal.middlewares.ProyectofinalSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'cryptoCurencyDataExtract.middlewares.CryptocurencydataextractDownloaderMiddleware': 543,
+#    'proyectoFinal.middlewares.ProyectofinalDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +69,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'cryptoCurencyDataExtract.pipelines.CryptocurencydataextractPipeline': 300,
+#    'proyectoFinal.pipelines.ProyectofinalPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
