@@ -10,8 +10,11 @@ from scrapy.exceptions import DropItem
 class LimpiarValoresVacios(object):
     def process_item(self, item, spider):
         market_cap = item['market_cap']
+        price = item['price']
+        supply = item['supply']
+        volume = item['volume']
         
-        if('?' in market_cap):
+        if(('?' in market_cap)or('?' in price)or('?' in supply)or('?' in volume)or('Low Vol' in supply)or('Low Vol' in volume)):
             raise DropItem('No reconoce dato')
         else:
             return item

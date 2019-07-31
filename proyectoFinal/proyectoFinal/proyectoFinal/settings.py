@@ -21,9 +21,12 @@ NEWSPIDER_MODULE = 'proyectoFinal.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+ITEM_PIPELINES = {
+    'proyectoFinal.pipelines.LimpiarValoresVacios': 200,
+}
 
 FEED_FORMAT = 'json'
-FEED_URI = 'tmp/crypto2.json'
+FEED_URI = 'tmp/exchange.json'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

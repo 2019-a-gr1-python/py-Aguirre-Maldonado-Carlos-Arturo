@@ -12,8 +12,14 @@ from scrapy.loader.processors import TakeFirst
 def limpiar_saltos_lineas(texto):
     return texto.replace('\n','')
 
-def datos_vacios(texto):
-    return texto.replace('?','')
+def limpiar_signos(texto):
+    return texto.replace('$','')
+
+def limpiar_comas(texto):
+    return texto.replace(',','')
+
+def convertir_decimales(texto):
+    return texto.replace('.',',')
 
 class ProyectofinalItem(scrapy.Item):
     
@@ -21,33 +27,63 @@ class ProyectofinalItem(scrapy.Item):
     market_cap = scrapy.Field(
         input_processor = MapCompose(
             limpiar_saltos_lineas,
-            datos_vacios
+            limpiar_signos,
+            limpiar_comas
         ),
-        output_processor = MapCompose()
+        output_processor = TakeFirst()
     )
     price = scrapy.Field(
         input_processor = MapCompose(
             limpiar_saltos_lineas,
-            datos_vacios
+            limpiar_signos,
+            limpiar_comas
         ),
-        output_processor = MapCompose()
+        output_processor = TakeFirst()
+    )
+    supply = scrapy.Field(
+        input_processor = MapCompose(
+            limpiar_saltos_lineas,
+            limpiar_signos,
+            limpiar_comas
+        ),
+        output_processor = TakeFirst()
+    )
+    volume = scrapy.Field(
+        input_processor = MapCompose(
+            limpiar_saltos_lineas,
+            limpiar_signos,
+            limpiar_comas
+        ),
+        output_processor = TakeFirst()
     )
     pass
 
 class ProyectofinalItem2(scrapy.Item):
     
-    supply = scrapy.Field(
+    name = scrapy.Field()
+    volume24h = scrapy.Field(
         input_processor = MapCompose(
-            limpiar_saltos_lineas,
-            datos_vacios
+            limpiar_saltos_lineas
         ),
-        output_processor = MapCompose()
+        output_processor = TakeFirst()
     )
-    volume = scrapy.Field(
+    volume7d = scrapy.Field(
         input_processor = MapCompose(
-            limpiar_saltos_lineas,
-            datos_vacios
+            limpiar_saltos_lineas
         ),
-        output_processor = MapCompose()
+        output_processor = TakeFirst()
     )
+    volume30d = scrapy.Field(
+        input_processor = MapCompose(
+            limpiar_saltos_lineas
+        ),
+        output_processor = TakeFirst()
+    )
+    markets = scrapy.Field(
+        input_processor = MapCompose(
+            limpiar_saltos_lineas
+        ),
+        output_processor = TakeFirst()
+    )
+    launched = scrapy.Field()
     pass
